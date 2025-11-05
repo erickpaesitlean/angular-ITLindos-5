@@ -1,0 +1,15 @@
+<h1>Lista Vagas</h1>
+<p>
+    {{ contador() }}
+    <button (click) = "add()">Adicionar</button>
+</p>
+
+<div>
+    @if(nomes.length != 0){
+        @for(nome of nomes; track $index){
+            <ul>
+                <li>{{nome}}</li>
+            </ul>
+        }
+    }
+</div>
