@@ -1,0 +1,13 @@
+header{
+    ul{
+        display: flex;
+        list-style: none;
+        justify-content: end;
+        margin: 20px;
+        gap: 20px
+    }
+    li{
+        cursor: pointer;
+    }
+
+}

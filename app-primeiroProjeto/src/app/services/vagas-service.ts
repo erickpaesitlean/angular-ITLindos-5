@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class VagasService {
   private http = inject(HttpClient)
-  private readonly urlBase: string = 'http://localhost:3000/vagas/'
+  private readonly urlBase: string = 'http://localhost:3000/vagas'
 
   getPedidoVagas(): Observable<PedidoVaga[]>{ //OS DOIS PONTOS DIZ O QUE SERA RETORNADO NESSE METODO
     return this.http.get<PedidoVaga[]>(this.urlBase)
