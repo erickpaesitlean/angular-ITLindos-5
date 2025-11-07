@@ -23,7 +23,7 @@ export class ListaVagas implements OnInit {
 
   pedidoVagas: WritableSignal<PedidoVaga[]> = signal([])
   gestores: WritableSignal<Gestores[]> = signal([])
-  
+
   vagaSelecionadaId? : PedidoVaga
 
   constructor(private vagasService: VagasService, private gestoresService: GestoresService){}
@@ -47,15 +47,15 @@ export class ListaVagas implements OnInit {
   }
 
 
-  carregarPedidoPeloId(id: string):void{
-    this.vagasService.getPedidoVagasPorId(id).subscribe({
-      next: data =>{
-        this.vagaSelecionadaId = data
-        console.log(this.vagaSelecionadaId)
-      },
-      error: error => console.log(error)
-    })
-  }
+  // carregarPedidoPeloId(id: string):void{
+  //   this.vagasService.getPedidoVagasPorId(id).subscribe({
+  //     next: data =>{
+  //       this.vagaSelecionadaId = data
+  //       console.log(this.vagaSelecionadaId)
+  //     },
+  //     error: error => console.log(error)
+  //   })
+  // }
 
   converteData(iso: string): string{
     let d = new Date(iso)
@@ -73,8 +73,5 @@ export class ListaVagas implements OnInit {
       }
     })
   }
-
-
-
 
 }

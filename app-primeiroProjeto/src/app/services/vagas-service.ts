@@ -18,8 +18,4 @@ export class VagasService {
     return this.http.get<PedidoVaga>(this.urlBase + id)
   }
 
-
-
-
-
 }
