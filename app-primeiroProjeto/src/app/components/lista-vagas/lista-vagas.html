@@ -1,3 +1,5 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <!-- <h1>Lista Vagas</h1>
 <p>
     {{ contador() }}
@@ -15,27 +17,65 @@
 </div> -->
 
 
-<h2>Lista Vagas</h2>
-<div>
-    @for(pedidoVaga of pedidoVagas(); track $index){
-        <ul>
-            <li>{{pedidoVaga.titulo}}</li>
-            <button type="button" (click)="carregarPedidoPeloId(pedidoVaga.id)"> Ver detalhes</button>
-        </ul>
-    }
-</div>
+<h2 class="text-center mt-5">Lista Vagas</h2>
+<table class="table table-striped table-hover w-80">
+    <thead>
+        <tr>
+            <th>TITULO</th>
+            <th>MOTIVO</th>
+            <th>REQUISITOS</th>
+            <th>QUANTIDADE</th>
+            <th>APROVAÇÃO</th>
+            <th>GESTOR</th>
+            <th>DATA SOLICITAÇÃO</th>
+            <th>DETALHES</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(vaga of pedidoVagas(); track $index){
+        <tr>
+            <td>{{vaga.titulo}}</td>
+            <td>{{vaga.motivo}}</td>
+            <td>
+                <select class="w-50" id="selectReqs">
+                    <option selected>Requisitos</option>
+                    @for(reqs of vaga.requisitos;track $index){
+                        <option value="{{reqs}}">{{reqs}}</option>
+                    }
+                </select>
+            </td>
+            <td>{{vaga.quantidade}}</td>
+            <td>{{vaga.aprovacao}}</td>
+            <td>
+                
+                @for(gestor of gestores(); track $index){
+                    @if(vaga.gestorId == gestor.id){
+                        <td>{{gestor.nome}}</td>
+                    }
+                }
+            </td>
+            <td>{{converteData(vaga.dataSolicitacao)}}</td>
+            <td>
+                <button (click)="carregarPedidoPeloId(vaga.id)">Detalhes</button>
+            </td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
 
 @if(vagaSelecionadaId){
-    <div>
+<div>
     <ul>
         <li>{{vagaSelecionadaId.id}}</li>
         <li>{{vagaSelecionadaId.titulo}}</li>
         <li>{{vagaSelecionadaId.motivo}}</li>
         <li>
             @for(reqs of vagaSelecionadaId.requisitos; track $index){
-                <ul>
-                    <li>{{reqs}}</li>
-                </ul>
+            <ul>
+                <li>{{reqs}}</li>
+            </ul>
             }
         </li>
         <li>{{vagaSelecionadaId.quantidade}}</li>

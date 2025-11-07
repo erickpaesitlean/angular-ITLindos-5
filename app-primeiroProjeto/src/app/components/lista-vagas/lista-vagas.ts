@@ -1,7 +1,8 @@
 import { Component, OnInit, WritableSignal, signal } from '@angular/core';
 import { VagasService } from '../../services/vagas-service';
 import { PedidoVaga } from '../../models/pedido-vaga';
-
+import { GestoresService } from '../../services/gestores-service';
+import { Gestores } from '../../models/gestores-vaga';
 @Component({
   selector: 'app-lista-vagas',
   imports: [],
@@ -21,14 +22,15 @@ export class ListaVagas implements OnInit {
   // }
 
   pedidoVagas: WritableSignal<PedidoVaga[]> = signal([])
-
-  vagaSelecionada: WritableSignal<PedidoVaga | null> = signal(null)
+  gestores: WritableSignal<Gestores[]> = signal([])
+  
   vagaSelecionadaId? : PedidoVaga
 
-  constructor(private vagasService: VagasService){}
+  constructor(private vagasService: VagasService, private gestoresService: GestoresService){}
 
   ngOnInit(): void {
     this.carregarPedidos()
+    this.carregarGestores()
   }
 
  
@@ -52,6 +54,23 @@ export class ListaVagas implements OnInit {
         console.log(this.vagaSelecionadaId)
       },
       error: error => console.log(error)
+    })
+  }
+
+  converteData(iso: string): string{
+    let d = new Date(iso)
+    return d.toLocaleDateString('pt-br')
+  }
+
+  carregarGestores(): void{
+    this.gestoresService.getGestores().subscribe({
+      next: dados =>{
+        console.log(dados)
+        this.gestores.set(dados)
+      },
+      error: error=>{
+        console.log(error)
+      }
     })
   }
 

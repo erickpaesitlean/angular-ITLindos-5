@@ -13,6 +13,7 @@ export class VagasService {
   getPedidoVagas(): Observable<PedidoVaga[]>{ //OS DOIS PONTOS DIZ O QUE SERA RETORNADO NESSE METODO
     return this.http.get<PedidoVaga[]>(this.urlBase)
   }
+
   getPedidoVagasPorId(id: string): Observable<PedidoVaga>{ //OS DOIS PONTOS DIZ O QUE SERA RETORNADO NESSE METODO
     return this.http.get<PedidoVaga>(this.urlBase + id)
   }
