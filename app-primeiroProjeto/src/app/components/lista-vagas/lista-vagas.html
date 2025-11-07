@@ -1,4 +1,4 @@
-<h1>Lista Vagas</h1>
+<!-- <h1>Lista Vagas</h1>
 <p>
     {{ contador() }}
     <button (click) = "add()">Adicionar</button>
@@ -12,4 +12,36 @@
             </ul>
         }
     }
+</div> -->
+
+
+<h2>Lista Vagas</h2>
+<div>
+    @for(pedidoVaga of pedidoVagas(); track $index){
+        <ul>
+            <li>{{pedidoVaga.titulo}}</li>
+            <button type="button" (click)="carregarPedidoPeloId(pedidoVaga.id)"> Ver detalhes</button>
+        </ul>
+    }
 </div>
+
+@if(vagaSelecionadaId){
+    <div>
+    <ul>
+        <li>{{vagaSelecionadaId.id}}</li>
+        <li>{{vagaSelecionadaId.titulo}}</li>
+        <li>{{vagaSelecionadaId.motivo}}</li>
+        <li>
+            @for(reqs of vagaSelecionadaId.requisitos; track $index){
+                <ul>
+                    <li>{{reqs}}</li>
+                </ul>
+            }
+        </li>
+        <li>{{vagaSelecionadaId.quantidade}}</li>
+        <li>{{vagaSelecionadaId.aprovacao}}</li>
+        <li>{{vagaSelecionadaId.gestorId}}</li>
+        <li>{{vagaSelecionadaId.dataSolicitacao}}</li>
+    </ul>
+</div>
+}
