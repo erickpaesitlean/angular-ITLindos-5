@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { GestoresService } from '../../services/gestores-service';
 import { Observable } from 'rxjs';
 import { Gestores } from '../../models/gestores-vaga';
@@ -11,41 +11,46 @@ import { Departamentos } from '../../models/departamentos-vaga';
   templateUrl: './lista-gestores.html',
   styleUrl: './lista-gestores.scss',
 })
-export class ListaGestores {
+export class ListaGestores implements OnInit {
   gestoresArray: WritableSignal<Gestores[]> = signal([])
   departamentosArray: WritableSignal<Departamentos[]> = signal([])
-  constructor(private serviceGestores: GestoresService, private serviceDepartamentos: DepartamentosService){}
+  constructor(private serviceGestores: GestoresService, private serviceDepartamentos: DepartamentosService) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.carregarGestores()
+    this.encontrarNomeDep()
   }
-  carregarGestores(): void{
+  carregarGestores(): void {
     this.serviceGestores.getGestores().subscribe({
-      next: dados =>{
+      next: dados => {
         console.log(dados)
         this.gestoresArray.set(dados)
       },
-      error: error =>{
+      error: error => {
         console.log(error)
       }
     })
   }
 
-  encontrarNomeDep(idDep: string): string{
+  encontrarNomeDep(): void {
     this.serviceDepartamentos.getDepartamentos().subscribe({
-      next: dados=> {
+      next: dados => {
         console.log(dados)
         this.departamentosArray.set(dados)
       },
-      error: error =>{
+      error: error => {
         console.log(error)
       }
     })
 
-    let nomeDepartamento = this.departamentosArray().find(n=> n.id == idDep)
-    if(nomeDepartamento){
+
+  }
+
+  encontrarNomeDepartamento(idDep: string): string {
+    let nomeDepartamento = this.departamentosArray().find(n => n.id == idDep)
+    if (nomeDepartamento) {
       return nomeDepartamento.departamento
-    }else{
+    } else {
       return 'Nada'
     }
 
