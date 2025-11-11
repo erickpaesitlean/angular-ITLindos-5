@@ -75,4 +75,14 @@ export class ListaVagas implements OnInit {
     })
   }
 
+  excluirVaga(idVagaParaxcluir: string):void{
+    this.vagasService.deletePedidoVagas(idVagaParaxcluir).subscribe({
+      next: vagaDeletada => {
+        alert('Vaga Deletada')
+        this.carregarPedidos()
+      },
+      error: erro => console.log(erro)
+    })
+  }
+
 }

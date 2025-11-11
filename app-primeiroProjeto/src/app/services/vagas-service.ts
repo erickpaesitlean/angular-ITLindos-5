@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { PedidoVaga } from '../models/pedido-vaga';
-import { Observable } from 'rxjs';
+import { Observable, TimestampProvider } from 'rxjs';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,9 @@ export class VagasService {
       }
     })
   }
+  getPedidoPorId(idParam: string): Observable<PedidoVaga>{
+    return this.http.get<PedidoVaga>(this.urlBase + `/${idParam}`)
+  }
   putPedidoVagas(novoItem: PedidoVaga, idVaga: string): Observable<PedidoVaga>{
     return this.http.put<PedidoVaga>(this.urlBase + `/${idVaga}`,novoItem,{
       headers: {
@@ -27,5 +31,7 @@ export class VagasService {
       }
     })
   }
-
+  deletePedidoVagas(idVagaParaxcluir: string): Observable<PedidoVaga>{
+    return this.http.delete<PedidoVaga>(this.urlBase + `/${idVagaParaxcluir}`)
+  }
 }

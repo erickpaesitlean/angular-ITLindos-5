@@ -58,6 +58,9 @@
             <td>
                 <button routerLink="/formVagas/{{vaga.id}}">EDITAR</button>
             </td>
+            <td>
+                <button (click)="excluirVaga(vaga.id!)">EXCLUIR</button>
+            </td>
         </tr>
         }
     </tbody>

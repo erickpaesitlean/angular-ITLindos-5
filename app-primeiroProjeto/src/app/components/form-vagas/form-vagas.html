@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <h1>{{titulo}}</h1>
     <label>Titulo</label>
     <input type="text" [(ngModel)]="obj.titulo">
@@ -7,6 +7,12 @@
     <label>Requisitos</label>
     <input #inputRequisito type="text">
     <button (click)="addReqs(inputRequisito.value)">Adicionar Requisito</button>
+     <div>
+        <h4>Requisitos</h4>
+        @for(reqs of obj.requisitos; track $index){
+            <li>{{reqs}}</li>
+        }
+    </div>
     <label>Quantidade</label>
     <select>
         <option value="1">1</option>
