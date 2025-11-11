@@ -1,5 +1,5 @@
 export interface Gestores {
-    id: string
+    id?: string
     nome: string
     email: string
     cargo: string

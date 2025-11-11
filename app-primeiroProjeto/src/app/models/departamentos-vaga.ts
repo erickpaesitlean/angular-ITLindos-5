@@ -1,4 +1,6 @@
 export interface Departamentos {
-    id: string
+    id?: string
     departamento: string
 }
+
+

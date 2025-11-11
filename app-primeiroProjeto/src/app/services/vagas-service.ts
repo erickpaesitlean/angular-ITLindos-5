@@ -13,9 +13,19 @@ export class VagasService {
   getPedidoVagas(): Observable<PedidoVaga[]>{ //OS DOIS PONTOS DIZ O QUE SERA RETORNADO NESSE METODO
     return this.http.get<PedidoVaga[]>(this.urlBase)
   }
-
-  getPedidoVagasPorId(id: string): Observable<PedidoVaga>{ //OS DOIS PONTOS DIZ O QUE SERA RETORNADO NESSE METODO
-    return this.http.get<PedidoVaga>(this.urlBase + id)
+  postPedidoVagas(novoItem: PedidoVaga): Observable<PedidoVaga>{
+    return this.http.post<PedidoVaga>(this.urlBase,novoItem,{
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+  }
+  putPedidoVagas(novoItem: PedidoVaga, idVaga: string): Observable<PedidoVaga>{
+    return this.http.put<PedidoVaga>(this.urlBase + `/${idVaga}`,novoItem,{
+      headers: {
+        "Content-type" : "application/json"
+      }
+    })
   }
 
 }

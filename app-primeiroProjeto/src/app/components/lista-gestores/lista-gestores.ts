@@ -1,13 +1,14 @@
 import { Component, OnInit, signal, WritableSignal } from '@angular/core';
 import { GestoresService } from '../../services/gestores-service';
-import { Observable } from 'rxjs';
 import { Gestores } from '../../models/gestores-vaga';
 import { DepartamentosService } from '../../services/departamentos-service';
 import { Departamentos } from '../../models/departamentos-vaga';
+import { FormsModule } from '@angular/forms';
+import { identifierName } from '@angular/compiler';
 
 @Component({
   selector: 'app-lista-gestores',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './lista-gestores.html',
   styleUrl: './lista-gestores.scss',
 })
@@ -18,7 +19,7 @@ export class ListaGestores implements OnInit {
 
   ngOnInit() {
     this.carregarGestores()
-    this.encontrarNomeDep()
+    this.carregarDepartamentos()
   }
   carregarGestores(): void {
     this.serviceGestores.getGestores().subscribe({
@@ -31,8 +32,7 @@ export class ListaGestores implements OnInit {
       }
     })
   }
-
-  encontrarNomeDep(): void {
+  carregarDepartamentos(): void {
     this.serviceDepartamentos.getDepartamentos().subscribe({
       next: dados => {
         console.log(dados)
@@ -42,10 +42,7 @@ export class ListaGestores implements OnInit {
         console.log(error)
       }
     })
-
-
   }
-
   encontrarNomeDepartamento(idDep: string): string {
     let nomeDepartamento = this.departamentosArray().find(n => n.id == idDep)
     if (nomeDepartamento) {
@@ -56,4 +53,29 @@ export class ListaGestores implements OnInit {
 
   }
 
+  nomeGestor: string = ''
+  emailGestor: string = ''
+  cargoGestor: string = ''
+  idDep: string = ''
+  criarGestor():void{
+    let objGestor: Gestores = {
+      nome: this.nomeGestor,
+      email: this.emailGestor,
+      cargo: this.cargoGestor,
+      departamentoId: this.idDep
+    }
+
+    this.serviceGestores.postGestores(objGestor).subscribe({
+      next: novoGestor => {
+        this.carregarGestores()
+        alert(`Gestor: ${novoGestor.nome} Criado!`)
+        this.nomeGestor = ''
+        this.emailGestor = ''
+        this.cargoGestor = ''
+        this.idDep = ''
+      },
+      error: error => console.log(error)
+    })
+
+  }
 }

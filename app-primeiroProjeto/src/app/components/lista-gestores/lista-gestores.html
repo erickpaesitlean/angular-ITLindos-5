@@ -1,22 +1,52 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<h1>Lista Gestores</h1>
-<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>NOME</th>
-            <th>EMAIL</th>
-            <th>CARGO</th>
-            <th>DEPARTAMENTO</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for(gestor of gestoresArray(); track $index){
-            <tr>
-                <td>{{gestor.nome}}</td>
-                <td>{{gestor.email}}</td>
-                <td>{{gestor.cargo}}</td>
-                <td>{{encontrarNomeDepartamento(gestor.departamentoId)}}</td>
-            </tr>
-        }
-    </tbody>
-</table>
+<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <h1>Lista Gestores</h1>
+    <div class="cont-tabela">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>NOME</th>
+                    <th>EMAIL</th>
+                    <th>CARGO</th>
+                    <th>DEPARTAMENTO</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(gestor of gestoresArray(); track $index){
+                <tr>
+                    <td>{{gestor.nome}}</td>
+                    <td>{{gestor.email}}</td>
+                    <td>{{gestor.cargo}}</td>
+                    <td>{{encontrarNomeDepartamento(gestor.departamentoId)}}</td>
+                    <td>
+                        <button class="btn btn-danger">Deletar</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="w-50">
+        <h1>Criar Gestor</h1>
+        <div class="input-group mb-3">
+            <input type="text" [(ngModel)]="nomeGestor" class="form-control" placeholder="Nome Gestor"
+                aria-label="Nome Gestor" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" [(ngModel)]="emailGestor" class="form-control" placeholder="Email Gestor"
+                aria-label="Email Gestor" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" [(ngModel)]="cargoGestor" class="form-control" placeholder="Cargo Gestor"
+                aria-label="Cargo Gestor" aria-describedby="basic-addon1">
+        </div>
+        <select class="form-select form-select-sm" aria-label="Small select example" [(ngModel)]="idDep">
+            @for(dept of departamentosArray(); track $index){
+            <option [value]="dept.id">{{dept.departamento}}</option>
+            }
+        </select>
+        <button (click)="criarGestor()" class="btn btn-success">Criar Gestor</button>
+    </div>
+
+</body>

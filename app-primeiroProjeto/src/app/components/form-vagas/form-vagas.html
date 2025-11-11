@@ -1,1 +1,27 @@
-<h1>Cadastrar Vagas</h1>
+<div>
+    <h1>{{titulo}}</h1>
+    <label>Titulo</label>
+    <input type="text" [(ngModel)]="obj.titulo">
+    <label>Motivo</label>
+    <input type="text" [(ngModel)]="obj.motivo">
+    <label>Requisitos</label>
+    <input #inputRequisito type="text">
+    <button (click)="addReqs(inputRequisito.value)">Adicionar Requisito</button>
+    <label>Quantidade</label>
+    <select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <label>Gestor</label>
+    <select [(ngModel)]="obj.gestorId">
+        @for(gestor of arrayGestores(); track $index){
+            <option value="{{gestor.id}}">{{gestor.nome}}</option>
+        }
+    </select>
+    <label>Data Solicitação</label>
+    <input type="date" [(ngModel)]="obj.dataSolicitacao">
+    <button (click)="fazerRequisicaoForm()">Ação</button>
+</div>

@@ -28,6 +28,7 @@
             <th>APROVAÇÃO</th>
             <th>GESTOR</th>
             <th>DATA SOLICITAÇÃO</th>
+            <th>EDIÇÃO</th>
         </tr>
     </thead>
     <tbody>
@@ -54,29 +55,11 @@
                 }
             </td>
             <td>{{converteData(vaga.dataSolicitacao)}}</td>
+            <td>
+                <button routerLink="/formVagas/{{vaga.id}}">EDITAR</button>
+            </td>
         </tr>
         }
     </tbody>
 </table>
-
-
-@if(vagaSelecionadaId){
-<div>
-    <ul>
-        <li>{{vagaSelecionadaId.id}}</li>
-        <li>{{vagaSelecionadaId.titulo}}</li>
-        <li>{{vagaSelecionadaId.motivo}}</li>
-        <li>
-            @for(reqs of vagaSelecionadaId.requisitos; track $index){
-            <ul>
-                <li>{{reqs}}</li>
-            </ul>
-            }
-        </li>
-        <li>{{vagaSelecionadaId.quantidade}}</li>
-        <li>{{vagaSelecionadaId.aprovacao}}</li>
-        <li>{{vagaSelecionadaId.gestorId}}</li>
-        <li>{{vagaSelecionadaId.dataSolicitacao}}</li>
-    </ul>
-</div>
-}
+<button routerLink="/formVagas/novaVaga">Nova Vaga</button>

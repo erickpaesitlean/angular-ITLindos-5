@@ -3,9 +3,10 @@ import { VagasService } from '../../services/vagas-service';
 import { PedidoVaga } from '../../models/pedido-vaga';
 import { GestoresService } from '../../services/gestores-service';
 import { Gestores } from '../../models/gestores-vaga';
+import { RouterLink} from "@angular/router";
 @Component({
   selector: 'app-lista-vagas',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './lista-vagas.html',
   styleUrl: './lista-vagas.scss',
 })

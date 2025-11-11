@@ -1,10 +1,10 @@
 export interface PedidoVaga {
-    id: string
+    id?: string
     titulo: string
     motivo: string
     requisitos: string[]
     quantidade: 1|2|3|4|5
-    aprovacao: 'Aprovado' | 'Pendente' | 'Reprovado'
+    aprovacao   : 'Aprovado' | 'Pendente' | 'Reprovado'
     gestorId: string
     dataSolicitacao: string
 }

@@ -13,4 +13,11 @@ export class GestoresService {
   getGestores(): Observable<Gestores[]>{
     return this.http.get<Gestores[]>(this.urlBase)
   }
+  postGestores(novoItem: Gestores): Observable<Gestores>{
+    return this.http.post<Gestores>(this.urlBase,novoItem,{
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+  }
 }

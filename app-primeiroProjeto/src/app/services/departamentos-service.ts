@@ -13,4 +13,11 @@ export class DepartamentosService {
   getDepartamentos():Observable<Departamentos[]>{
     return this.http.get<Departamentos[]>(this.urlBase)
   }
+  postDepartamento(novoItem: Departamentos):Observable<Departamentos>{
+    return this.http.post<Departamentos>(this.urlBase,novoItem,{
+      headers: {
+        "Content-type": "json/application"
+      }
+    })
+  }
 }
