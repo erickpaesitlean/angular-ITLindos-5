@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeadNav } from "./components/master/head-nav/head-nav";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeadNav],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

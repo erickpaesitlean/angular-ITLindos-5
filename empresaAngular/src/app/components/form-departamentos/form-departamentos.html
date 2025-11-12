@@ -1,0 +1,24 @@
+<body>
+    <div class="form-container">
+        <p class="title">{{ titulo }}</p>
+
+        <form class="form" (ngSubmit)="criarOuEditar()">
+            <div class="input-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Digite o nome do departamento"
+                    [(ngModel)]="departamentoParaEnviar.nome" name="nome" required />
+            </div>
+
+            <div class="input-group">
+                <label for="local">Local</label>
+                <input type="text" id="local" placeholder="Digite o local" [(ngModel)]="departamentoParaEnviar.local"
+                    name="local" required />
+            </div>
+
+            <button class="sign" type="submit">
+                Criar Departamento
+            </button>
+        </form>
+    </div>
+
+</body>
