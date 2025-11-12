@@ -1,0 +1,37 @@
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NOME</th>
+                <th>CARGO</th>
+                <th>SALÁRIO</th>
+                <th>DEPARTAMENTO</th>
+                <th>EDIÇÃO</th>
+                <th>DELETAR</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(funcs of funcionariosData(); track $index){
+                <tr>
+                    <td>{{funcs.id}}</td>
+                    <td>{{funcs.nome}}</td>
+                    <td>{{funcs.cargo}}</td>
+                    <td>{{funcs.salario}}</td>
+                    @for(dept of departamentosData(); track $index){
+                        @if(dept.id === funcs.departamentoId){
+                            <td>{{dept.local}}</td>
+                        }
+                    }
+                    <td>
+                        <button routerLink="/formFuncionarios/{{funcs.id}}">EDITAR</button>
+                    </td>
+                    <td>
+                        <button (click)="deletarFuncionario(funcs.id!)">DELETAR</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button routerLink="/formFuncionarios/novoFunc">Criar Funcionário</button>
+</body>

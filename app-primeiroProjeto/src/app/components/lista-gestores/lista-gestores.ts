@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, CSP_NONCE, OnInit, signal, WritableSignal } from '@angular/core';
 import { GestoresService } from '../../services/gestores-service';
 import { Gestores } from '../../models/gestores-vaga';
 import { DepartamentosService } from '../../services/departamentos-service';
@@ -51,6 +51,16 @@ export class ListaGestores implements OnInit {
       return 'Nada'
     }
 
+  }
+
+  deletarGestor(idGestor: string){
+    this.serviceGestores.deleteGestores(idGestor).subscribe({
+      next: gestorExcluido => {
+        alert(`Gestor ${gestorExcluido.nome} Excluído!`)
+        this.carregarGestores()
+      },
+      error: erro => console.log(erro)
+    })
   }
 
   nomeGestor: string = ''

@@ -1,33 +1,47 @@
-<div class="container">
-    <h1>{{titulo}}</h1>
-    <label>Titulo</label>
-    <input type="text" [(ngModel)]="obj.titulo">
-    <label>Motivo</label>
-    <input type="text" [(ngModel)]="obj.motivo">
-    <label>Requisitos</label>
-    <input #inputRequisito type="text">
-    <button (click)="addReqs(inputRequisito.value)">Adicionar Requisito</button>
-     <div>
-        <h4>Requisitos</h4>
-        @for(reqs of obj.requisitos; track $index){
-            <li>{{reqs}}</li>
-        }
-    </div>
-    <label>Quantidade</label>
-    <select>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <label>Gestor</label>
-    <select [(ngModel)]="obj.gestorId">
-        @for(gestor of arrayGestores(); track $index){
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+<body>
+    <div class="container">
+        <h1>{{titulo}}</h1>
+        <div class="input-group flex-nowrap">
+             <span class="input-group-text" id="basic-addon1">Titulo</span>
+            <input type="text" [(ngModel)]="obj.titulo" class="form-control" placeholder="" aria-label="Titulo"
+                aria-describedby="addon-wrapping">
+        </div>
+        <div class="input-group flex-nowrap">
+             <span class="input-group-text" id="basic-addon1">Motivo</span>
+            <input type="text" [(ngModel)]="obj.motivo" class="form-control" placeholder="" aria-label="Motivo"
+                aria-describedby="addon-wrapping">
+        </div>
+        <div class="input-group flex-nowrap">
+             <span class="input-group-text" id="basic-addon1">Add Requisitos</span>
+            <input #inputRequisito type="text" class="form-control" placeholder="" aria-label="Requisitos"
+                aria-describedby="addon-wrapping">
+        </div>
+        <button class="btn btn-success" (click)="addReqs(inputRequisito.value)">Adicionar Requisito</button>
+        <div class="list-group mb-5">
+            <h4>Requisitos</h4>
+                @for(reqs of obj.requisitos; track $index){
+                <a class="list-group-item list-group-item-action">{{reqs}}</a>
+            }
+        </div>
+        <div class="input-group flex-nowrap">
+             <span class="input-group-text" id="basic-addon1">Quantidade</span>
+            <input type="text" [(ngModel)]="obj.quantidade" class="form-control" placeholder="Quantidade"
+                aria-label="Quantidade" aria-describedby="addon-wrapping">
+        </div>
+        <select class="form-select" aria-label="Default select example" [(ngModel)]="obj.gestorId">
+            @for(gestor of arrayGestores(); track $index){
             <option value="{{gestor.id}}">{{gestor.nome}}</option>
-        }
-    </select>
-    <label>Data Solicitação</label>
-    <input type="date" [(ngModel)]="obj.dataSolicitacao">
-    <button (click)="fazerRequisicaoForm()">Ação</button>
-</div>
+            }
+        </select>
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="basic-addon1">Data Soli</span>
+            <input type="date" [(ngModel)]="obj.dataSolicitacao" class="form-control" placeholder="Data Solicitação"
+                aria-label="Data Solicitação" aria-describedby="addon-wrapping">
+        </div>
+        <button class="btn btn-success" (click)="fazerRequisicaoForm()">Ação</button>
+        <button routerLink="/" class="btn btn-outline-info">Voltar</button>
+    </div>
+</body>

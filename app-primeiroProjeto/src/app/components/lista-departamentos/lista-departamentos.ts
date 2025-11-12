@@ -41,4 +41,14 @@ export class ListaDepartamentos implements OnInit {
     })
   }
 
+  deletarDept(idDept: string):void{
+    this.serviceDepartamento.deletarDepartamento(idDept).subscribe({
+      next: deptDeletado => {
+        alert(`Departamento: ${deptDeletado.departamento} Excluído!`)
+        this.carregarDepartamentos()
+      },
+      error: erro => console.log(erro)
+    })
+  }
+
 }

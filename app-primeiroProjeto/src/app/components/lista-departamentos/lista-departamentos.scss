@@ -1,4 +1,6 @@
-body{
+@import url('https://fonts.googleapis.com/css2?family=Charis+SIL:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
     display: flex;
     flex-direction: column;
     gap: 2em;
@@ -6,13 +8,32 @@ body{
     align-items: center;
     min-height: 100vh;
 
-    .cont-tabela{
-        max-height:350px;
+    h1 {
+        font-family: "Charis SIL", serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .cont-tabela {
+        max-height: 350px;
+        width: 35%;
         overflow-y: scroll;
         padding: 0;
         margin: 0;
+        text-align: center;
     }
-    button{
-        width: 100%;
+
+    .containerCriarDept{
+        button{
+            width: 100%;
+        }
     }
+
+    button {
+        width: 60%;
+    }
+}
+
+#imgLogoItLean{
+    width: 100px;
 }

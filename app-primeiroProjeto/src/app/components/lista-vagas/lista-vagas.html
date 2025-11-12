@@ -1,6 +1,7 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-<!-- <h1>Lista Vagas</h1>
+<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- <h1>Lista Vagas</h1>
 <p>
     {{ contador() }}
     <button (click) = "add()">Adicionar</button>
@@ -17,52 +18,56 @@
 </div> -->
 
 
-<h2 class="text-center mt-5">Lista Vagas</h2>
-<table class="table table-striped table-hover w-80">
-    <thead>
-        <tr>
-            <th>TITULO</th>
-            <th>MOTIVO</th>
-            <th>REQUISITOS</th>
-            <th>QUANTIDADE</th>
-            <th>APROVAÇÃO</th>
-            <th>GESTOR</th>
-            <th>DATA SOLICITAÇÃO</th>
-            <th>EDIÇÃO</th>
-        </tr>
-    </thead>
-    <tbody>
-        @for(vaga of pedidoVagas(); track $index){
-        <tr>
-            <td>{{vaga.titulo}}</td>
-            <td>{{vaga.motivo}}</td>
-            <td>
-                <select class="w-50" id="selectReqs">
-                    <option selected>Requisitos</option>
-                    @for(reqs of vaga.requisitos;track $index){
-                        <option value="{{reqs}}">{{reqs}}</option>
+    <h2 class="text-center mt-5">Lista Vagas</h2>
+    <div class="containerTable">
+        <table class="table table-striped table-hover w-80">
+            <thead>
+                <tr>
+                    <th>TITULO</th>
+                    <th>MOTIVO</th>
+                    <th>REQUISITOS</th>
+                    <th>QUANTIDADE</th>
+                    <th>APROVAÇÃO</th>
+                    <th>GESTOR</th>
+                    <th>DATA SOLICITAÇÃO</th>
+                    <th>EDIÇÃO</th>
+                    <th>EXCLUIR</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(vaga of pedidoVagas(); track $index){
+                <tr>
+                    <td>{{vaga.titulo}}</td>
+                    <td>{{vaga.motivo}}</td>
+                    <td>
+                        <select class="w-50" id="selectReqs">
+                            <option selected>Requisitos</option>
+                            @for(reqs of vaga.requisitos;track $index){
+                            <option value="{{reqs}}">{{reqs}}</option>
+                            }
+                        </select>
+                    </td>
+                    <td>{{vaga.quantidade}}</td>
+                    <td>{{vaga.aprovacao}}</td>
+                    <td>
+
+                        @for(gestor of gestores(); track $index){
+                        @if(vaga.gestorId == gestor.id){
+                    <td>{{gestor.nome}}</td>
                     }
-                </select>
-            </td>
-            <td>{{vaga.quantidade}}</td>
-            <td>{{vaga.aprovacao}}</td>
-            <td>
-                
-                @for(gestor of gestores(); track $index){
-                    @if(vaga.gestorId == gestor.id){
-                        <td>{{gestor.nome}}</td>
                     }
+                    </td>
+                    <td>{{converteData(vaga.dataSolicitacao)}}</td>
+                    <td>
+                        <button class="btn btn-warning" routerLink="/formVagas/{{vaga.id}}">EDITAR</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="excluirVaga(vaga.id!)">EXCLUIR</button>
+                    </td>
+                </tr>
                 }
-            </td>
-            <td>{{converteData(vaga.dataSolicitacao)}}</td>
-            <td>
-                <button routerLink="/formVagas/{{vaga.id}}">EDITAR</button>
-            </td>
-            <td>
-                <button (click)="excluirVaga(vaga.id!)">EXCLUIR</button>
-            </td>
-        </tr>
-        }
-    </tbody>
-</table>
-<button routerLink="/formVagas/novaVaga">Nova Vaga</button>
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-success w-50" routerLink="/formVagas/novaVaga">Nova Vaga</button>
+</body>

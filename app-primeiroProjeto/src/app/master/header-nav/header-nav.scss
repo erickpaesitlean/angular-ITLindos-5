@@ -1,17 +1,33 @@
-header{
-    border: 0.4px solid black;
+
+header {
     color: white;
-    background-color: black;
+    background-color: rgb(51, 8, 8);
     padding: 10px;
-    ul{
+
+    .logo {
+        padding: 10px;
+        img{
+            width: 80px;
+            border-radius: 50%;
+        }
+    }
+
+    ul {
         display: flex;
         list-style: none;
         justify-content: end;
         margin: 20px;
         gap: 20px
     }
-    li{
+
+    li {
         cursor: pointer;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 
 }

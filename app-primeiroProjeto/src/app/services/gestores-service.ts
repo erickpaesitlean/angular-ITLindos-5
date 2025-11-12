@@ -20,4 +20,7 @@ export class GestoresService {
       }
     })
   }
+  deleteGestores(idGestor: string): Observable<Gestores>{
+    return this.http.delete<Gestores>(this.urlBase + `/${idGestor}`)
+  }
 }

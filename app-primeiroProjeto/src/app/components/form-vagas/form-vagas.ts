@@ -1,16 +1,14 @@
 import { Component, OnInit, signal, WritableSignal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { PedidoVaga } from '../../models/pedido-vaga';
 import { FormsModule } from '@angular/forms';
 import { VagasService } from '../../services/vagas-service';
-import { DepartamentosService } from '../../services/departamentos-service';
-import { Departamentos } from '../../models/departamentos-vaga';
 import { GestoresService } from '../../services/gestores-service';
 import { Gestores } from '../../models/gestores-vaga';
 
 @Component({
   selector: 'app-form-vagas',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './form-vagas.html',
   styleUrl: './form-vagas.scss',
 })
@@ -56,6 +54,13 @@ export class FormVagas implements OnInit {
             this.obj.dataSolicitacao = vagaParaEditar.dataSolicitacao
         }
       })
+
+      // if(parametro == 'novaVaga'){
+      //   POST
+      // }else{
+      //   PUT
+      // }
+      
     }
   }
 

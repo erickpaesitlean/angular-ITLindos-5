@@ -20,4 +20,7 @@ export class DepartamentosService {
       }
     })
   }
+  deletarDepartamento(idDept: string): Observable<Departamentos>{
+    return this.http.delete<Departamentos>(this.urlBase + `/${idDept}`)
+  }
 }

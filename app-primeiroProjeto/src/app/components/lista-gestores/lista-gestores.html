@@ -20,7 +20,10 @@
                     <td>{{gestor.cargo}}</td>
                     <td>{{encontrarNomeDepartamento(gestor.departamentoId)}}</td>
                     <td>
-                        <button class="btn btn-danger">Deletar</button>
+                        <button class="btn btn-warning">Editar</button>
+                    </td>
+                    <td>
+                        <button (click)="deletarGestor(gestor.id!)" class="btn btn-danger">Deletar</button>
                     </td>
                 </tr>
                 }

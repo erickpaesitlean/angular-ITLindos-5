@@ -2,7 +2,7 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
 <body>
-     <div>
+     <div class="containerCriarDept">
         <h1>Criar Departamento</h1>
         <div class="input-group mb-3">
             <input type="text" [(ngModel)]="nomeCategoria" class="form-control" placeholder="Nome Departamento"
@@ -16,6 +16,7 @@
                 <tr>
                     <th>ID</th>
                     <th>DEPARTAMENTO</th>
+                    <th>EDITAR</th>
                     <th>DELETAR</th>
                 </tr>
             </thead>
@@ -25,7 +26,10 @@
                     <td>{{dept.id}}</td>
                     <td>{{dept.departamento}}</td>
                     <td>
-                        <button class="btn btn-danger">Deletar</button>
+                        <button class="btn btn-warning">Editar</button>
+                    </td>
+                    <td>
+                        <button (click)="deletarDept(dept.id!)" class="btn btn-danger">Deletar</button>
                     </td>
                 </tr>
                 }

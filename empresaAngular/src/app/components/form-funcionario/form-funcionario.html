@@ -1,0 +1,14 @@
+<body>
+    <h1>{{titulo}}</h1>
+    <div>
+        <input type="text" placeholder="Nome" [(ngModel)]="funcionarioParaEnviar.nome">
+        <input type="text" placeholder="Cargo" [(ngModel)]="funcionarioParaEnviar.cargo">
+        <input type="text" placeholder="Salário" [(ngModel)]="funcionarioParaEnviar.salario">
+        <select [(ngModel)]="funcionarioParaEnviar.departamentoId">
+            @for(depts of departamentosData(); track $index){
+                <option value="{{depts.id}}">{{depts.nome}}</option>
+            }
+        </select>
+        <button (click)="criarOuEditar()">Criar Funcionário</button>
+    </div>
+</body>
