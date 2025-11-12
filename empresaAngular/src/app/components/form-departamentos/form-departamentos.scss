@@ -6,6 +6,9 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 70vh;
+    .erro{
+      color: red;
+    }
 }
 .form-container {
   width: 25%;

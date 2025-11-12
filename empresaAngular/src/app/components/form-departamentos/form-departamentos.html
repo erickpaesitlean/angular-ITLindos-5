@@ -1,24 +1,26 @@
 <body>
-    <div class="form-container">
+    <form class="form-container" [formGroup]="formularioDepartamento" (ngSubmit)="criarOuEditar()">
         <p class="title">{{ titulo }}</p>
+        <div class="input-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" placeholder="Digite o nome do departamento" formControlName="nome" name="nome"
+                required />
+            @if(formularioDepartamento.get('nome')?.invalid && formularioDepartamento.get('nome')?.touched){
+            <div class="erro">Preencha o campo Nome!</div>
+            }
+        </div>
 
-        <form class="form" (ngSubmit)="criarOuEditar()">
-            <div class="input-group">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" placeholder="Digite o nome do departamento"
-                    [(ngModel)]="departamentoParaEnviar.nome" name="nome" required />
-            </div>
+        <div class="input-group">
+            <label for="local">Local</label>
+            <input type="text" id="local" placeholder="Digite o local" formControlName="local" name="local" required />
+            @if(formularioDepartamento.get('local')?.invalid && formularioDepartamento.get('local')?.touched){
+            <div class="erro">Preencha o campo Local!</div>
+            }
+        </div>
 
-            <div class="input-group">
-                <label for="local">Local</label>
-                <input type="text" id="local" placeholder="Digite o local" [(ngModel)]="departamentoParaEnviar.local"
-                    name="local" required />
-            </div>
-
-            <button class="sign" type="submit">
-                Criar Departamento
-            </button>
-        </form>
-    </div>
+        <button class="sign" type="submit">
+            {{textoButton}}
+        </button>
+    </form>
 
 </body>

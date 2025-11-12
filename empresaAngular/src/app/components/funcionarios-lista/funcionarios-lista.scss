@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: "Manrope", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 20px;
     gap: 2em;
     h1{
         margin-top: 2em;

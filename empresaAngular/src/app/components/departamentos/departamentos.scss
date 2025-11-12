@@ -1,20 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 body {
-    font-family: "Manrope", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2em;
-    h1{
+
+    h1 {
         margin-top: 2em;
     }
-    .containerTable{
-        max-height: 380px;
-        overflow-y: scroll;
 
+    .containerTable {
+        max-height: 380px;
+        overflow-y: auto;
+        border-radius: 10px;
+        scroll-behavior: smooth;
+
+        scrollbar-width: thin;
+        scrollbar-color: #6d6d8b #f5f5f5;
     }
+
+    .containerTable::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .containerTable::-webkit-scrollbar-track {
+        background: #f5f5f5;
+        border-radius: 10px;
+    }
+
+    .containerTable::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #5d5d74, #7b7ba4);
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .containerTable::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #4c4c66, #6c6c99);
+    }
+
+    .containerTable::-webkit-scrollbar-thumb:active {
+        background: linear-gradient(180deg, #3c3c54, #5c5c84);
+    }
+
+    .containerTable::-webkit-scrollbar-button {
+        display: none;
+    }
+
 }
 
 .editBtn {
@@ -164,3 +198,4 @@ button span {
 button:hover {
     background-color: #0071e2;
 }
+

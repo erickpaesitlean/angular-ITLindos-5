@@ -62,14 +62,6 @@ export class FormFuncionario implements OnInit {
       })
     }
   }
-
-  funcionarioParaEnviar: Funcionario = {
-    nome: '',
-    cargo: '',
-    salario: 0,
-    departamentoId: ''
-  }
-
   mostrarAlerta(campo: string){
     alert(`Campo ${campo} está inválido`)
   }
@@ -106,7 +98,11 @@ export class FormFuncionario implements OnInit {
         })
       }
     }else{
-      alert('Prencha os campos!')
+      Swal.fire({
+        title: 'Erro',
+        text: 'Você deve preencher todos os Campos!',
+        icon: 'error',
+      })
     }
 
   }
