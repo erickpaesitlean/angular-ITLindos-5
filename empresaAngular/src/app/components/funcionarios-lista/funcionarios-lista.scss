@@ -6,14 +6,20 @@ body {
     justify-content: center;
     align-items: center;
     font-family: "IBM Plex Sans", sans-serif;
-    font-size: 20px;
-    gap: 2em;
+    font-size: 15px;
+    gap: 1.5em;
+
     h1{
-        margin-top: 2em;
+      font-size: 25px;
     }
+    
     .containerTable{
-      max-height: 380px;
+      max-height: 300px;
+      max-width: 75%;
       overflow-y: scroll;
+      table{
+        text-align: center;
+      }
     }
 }
 

@@ -8,5 +8,5 @@ import { RouterLink } from "@angular/router";
   styleUrl: './head-nav.scss',
 })
 export class HeadNav {
-
+  
 }

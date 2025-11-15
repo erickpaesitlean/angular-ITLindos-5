@@ -4,7 +4,6 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>NOME</th>
                     <th>CARGO</th>
                     <th>SALÁRIO</th>
@@ -16,7 +15,6 @@
             <tbody>
                 @for(funcs of funcionariosData(); track $index){
                 <tr class="linhaTabelaParaAlinhar">
-                    <td>{{funcs.id}}</td>
                     <td>{{funcs.nome}}</td>
                     <td>{{funcs.cargo}}</td>
                     <td>{{funcs.salario}}</td>
